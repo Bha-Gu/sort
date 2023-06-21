@@ -1,4 +1,4 @@
-pub fn bubble<T>(arr: &mut Vec<T>)
+pub fn bubble<T>(arr: &mut [T])
 where
     T: PartialOrd,
 {
