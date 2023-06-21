@@ -16,6 +16,12 @@ where T: PartialOrd,
     }
 }
 
+fn quick<T>(arr: &mut Vec<T>)
+where T: PartialOrd,
+{
+    
+}
+
 fn main() {
     let mut arr = vec![1,6586,145,463,14, 574,169,461,69875,4563,4,58,46358,43,5];
     let mut arr2 = arr.clone();
