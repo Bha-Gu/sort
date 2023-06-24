@@ -32,7 +32,7 @@ where
         arr.swap(hi, idx);
     }
 
-    print!("+{}", numop);
+    print!("+{numop}");
     idx
 }
 

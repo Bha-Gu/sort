@@ -16,5 +16,5 @@ where
             break;
         }
     }
-    println!("Number of swaps used:- {}", numop);
+    println!("Number of swaps used:- {numop}");
 }
