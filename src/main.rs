@@ -2,6 +2,10 @@ mod selection;
 use selection::selection;
 
 mod double_selection;
+use double_selection::double_selection;
+
+mod insertion;
+use insertion::insertion;
 
 mod bubble;
 use bubble::bubble;
@@ -9,17 +13,23 @@ use bubble::bubble;
 mod quick;
 use quick::quick;
 
-use crate::double_selection::double_selection;
+mod merge;
+use merge::merge;
 
 fn main() {
-    let mut arr = vec![
-        1, 6586, 145, 463, 14, 574, 169, 461, 69875, 4563, 4, 58, 46358, 43, 5,
-    ];
+    let mut arr = vec![0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    // let mut arr = vec![
+    // 1, 6586, 145, 463, 14, 574, 169, 461, 69875, 4563, 4, 58, 46358, 43, 5,
+    // ];
     // let mut arr = vec![1, 9, 2, 8, 3, 7, 4, 6, 5];
+    // let mut arr = vec![9, 8, 7, 6, 5, 4, 3, 2, 1];
+
     let mut arr_selection = arr.clone();
     let mut arr_double_selection = arr.clone();
+    let mut arr_insertion = arr.clone();
     let mut arr_bubble = arr.clone();
     let mut arr_quick = arr.clone();
+    let mut arr_merge = arr.clone();
     let arrr = arr.clone();
     println!("Original:- \n{arrr:?}\n");
     println!("Rust:-");
@@ -34,6 +44,10 @@ fn main() {
     double_selection(&mut arr_double_selection);
     println!("{arr_double_selection:?}\n");
 
+    println!("Insertion:-");
+    insertion(&mut arr_insertion);
+    println!("{arr_insertion:?}\n");
+
     println!("Bubble:-");
     bubble(&mut arr_bubble);
     println!("{arr_bubble:?}\n");
@@ -41,4 +55,8 @@ fn main() {
     println!("Quick:-");
     quick(&mut arr_quick);
     println!("{arr_quick:?}\n");
+
+    println!("Merge:-");
+    merge(&mut arr_merge);
+    println!("{arr_merge:?}\n");
 }
