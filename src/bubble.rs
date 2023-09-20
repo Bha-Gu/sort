@@ -3,12 +3,14 @@ where
     T: PartialOrd,
 {
     let mut numop: usize = 0;
+    let mut numcmp = 0;
     for i in 0..arr.len() - 1 {
         let mut swapped = false;
         for j in 0..(arr.len() - 1 - i) {
             if arr[j] > arr[j + 1] {
                 arr.swap(j, j + 1);
                 numop += 1;
+                numcmp += 1;
                 swapped = true;
             }
         }
@@ -17,4 +19,5 @@ where
         }
     }
     println!("Number of swaps used:- {numop}");
+    println!("Number of comparisions used:- {numcmp}");
 }

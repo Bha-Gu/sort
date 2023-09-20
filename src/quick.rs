@@ -1,17 +1,17 @@
-fn qs<T>(arr: &mut [T], lo: usize, hi: usize, numop: &mut usize)
+fn qs<T>(arr: &mut [T], lo: usize, hi: usize, numop: &mut usize, numcmp: &mut usize)
 where
     T: PartialOrd + Clone + core::fmt::Debug,
 {
     if lo >= hi {
         //Base Case
     } else {
-        let pivot_idx = partition(arr, lo, hi, numop);
-        qs(arr, lo, pivot_idx - 1, numop);
-        qs(arr, pivot_idx + 1, hi, numop);
+        let pivot_idx = partition(arr, lo, hi, numop, numcmp);
+        qs(arr, lo, pivot_idx - 1, numop, numcmp);
+        qs(arr, pivot_idx + 1, hi, numop, numcmp);
     }
 }
 
-fn partition<T>(arr: &mut [T], lo: usize, hi: usize, numop: &mut usize) -> usize
+fn partition<T>(arr: &mut [T], lo: usize, hi: usize, numop: &mut usize, numcmp: &mut usize) -> usize
 where
     T: PartialOrd + Clone,
 {
@@ -20,6 +20,7 @@ where
     let mut idx = lo;
     for i in lo..hi {
         if arr[i] <= pivot {
+            *numcmp += 1;
             if i != idx {
                 *numop += 1;
                 arr.swap(i, idx);
@@ -44,7 +45,8 @@ where
     let len = arr.len();
     let hi = if len > 1 { len - 1 } else { 0 };
     let mut numop: usize = 0;
-    qs(arr, lo, hi, &mut numop);
-    print!("Number of swaps used:- {numop}");
-    println!();
+    let mut numcmp = 0;
+    qs(arr, lo, hi, &mut numop, &mut numcmp);
+    println!("Number of swaps used:- {numop}");
+    println!("Number of comparisions used:- {numcmp}");
 }
