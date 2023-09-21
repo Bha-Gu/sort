@@ -31,6 +31,14 @@ fn merge_arr<T>(arr: &mut [T], lo: usize, mid: usize, hi: usize, monitor: &mut [
 where
     T: PartialOrd + Clone + std::fmt::Debug,
 {
+    monitor[2] += 2;
+    if mid == hi || mid == lo {
+        return;
+    }
+    monitor[1] += 1;
+    if arr[mid] <= arr[mid + 1] {
+        return;
+    }
     let mut aux: Vec<T> = Vec::with_capacity(arr.len());
     for i in &*arr {
         aux.push(i.clone());
