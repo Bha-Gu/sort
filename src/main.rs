@@ -127,7 +127,7 @@ mod tests {
         for i in arrays {
             let mut arr = i.clone();
             println!("{arr:?}");
-            arr.sort();
+            arr.sort_unstable();
             assert_eq!(run_selection(&i), arr);
         }
     }
@@ -138,7 +138,7 @@ mod tests {
         for i in arrays {
             let mut arr = i.clone();
             println!("{arr:?}");
-            arr.sort();
+            arr.sort_unstable();
             assert_eq!(run_double_selection(&i), arr);
         }
     }
@@ -149,7 +149,7 @@ mod tests {
         for i in arrays {
             let mut arr = i.clone();
             println!("{arr:?}");
-            arr.sort();
+            arr.sort_unstable();
             assert_eq!(run_insertion(&i), arr);
         }
     }
@@ -160,7 +160,7 @@ mod tests {
         for i in arrays {
             let mut arr = i.clone();
             println!("{arr:?}");
-            arr.sort();
+            arr.sort_unstable();
             assert_eq!(run_bubble(&i), arr);
         }
     }
@@ -171,7 +171,7 @@ mod tests {
         for i in arrays {
             let mut arr = i.clone();
             println!("{arr:?}");
-            arr.sort();
+            arr.sort_unstable();
             assert_eq!(run_quick(&i), arr);
         }
     }
@@ -182,7 +182,7 @@ mod tests {
         for i in arrays {
             let mut arr = i.clone();
             println!("{arr:?}");
-            arr.sort();
+            arr.sort_unstable();
             assert_eq!(run_merge(&i), arr);
         }
     }
