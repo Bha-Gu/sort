@@ -31,8 +31,8 @@ fn merge_arr<T>(arr: &mut [T], lo: usize, mid: usize, hi: usize, monitor: &mut [
 where
     T: PartialOrd + Clone + std::fmt::Debug,
 {
-    monitor[2] += 2;
-    if mid == hi || mid == lo {
+    monitor[2] += 1;
+    if hi == lo {
         return;
     }
     monitor[1] += 1;
@@ -54,17 +54,11 @@ where
             monitor[0] += 1;
             let a = aux[i].clone();
             i += 1;
-            if i == k {
-                print!(". ");
-            }
             a
         } else {
             monitor[0] += 1;
             let a = aux[j].clone();
             j += 1;
-            if j == k {
-                print!(". ");
-            }
             a
         };
         k += 1;
@@ -74,9 +68,6 @@ where
         while j <= hi {
             monitor[0] += 1;
             arr[k] = aux[j].clone();
-            if j == k {
-                print!(". ");
-            }
             j += 1;
             k += 1;
         }
@@ -85,9 +76,6 @@ where
         while i <= mid {
             monitor[0] += 1;
             arr[k] = aux[i].clone();
-            if i == k {
-                print!(". ");
-            }
             i += 1;
             k += 1;
         }
