@@ -5,7 +5,7 @@ where
     let len = arr.len();
     let mut numop = 0;
     let mut numcmp = 0;
-    // let mut numicmp = 0;
+    // let mut num_idx_cmp = 0;
     for i in 0..len {
         let mut place_idx = i;
         let mut idx_changed = false;
@@ -27,5 +27,5 @@ where
     }
     println!("Number of swaps used:- {numop}");
     println!("Number of comparisions used:- {numcmp}");
-    // println!("Number of index comparisions used:- {numicmp}");
+    // println!("Number of index comparisions used:- {num_idx_cmp}");
 }

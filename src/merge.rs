@@ -50,13 +50,12 @@ where
     while i <= mid && j <= hi {
         // monitor[2] += 2;
         monitor[1] += 1;
+        monitor[0] += 1;
         arr[k] = if aux[i] <= aux[j] {
-            monitor[0] += 1;
             let a = aux[i].clone();
             i += 1;
             a
         } else {
-            monitor[0] += 1;
             let a = aux[j].clone();
             j += 1;
             a

@@ -5,10 +5,10 @@ where
     let len = arr.len();
     let mut numop = 0;
     let mut numcmp = 0;
-    let mut numicmp = 0;
+    let mut num_idx_cmp = 0;
     for i in 0..len {
         if i >= len - i - 1 {
-            numicmp += 1;
+            num_idx_cmp += 1;
             break;
         }
         let mut smallest_idx = i;
@@ -22,7 +22,7 @@ where
             arr.swap(i, smallest_idx);
             numop += 1;
         }
-        numicmp += 1;
+        num_idx_cmp += 1;
         let mut larget_idx = len - i - 1;
         for j in (i + 1)..(len - i - 1) {
             if arr[j] > arr[larget_idx] {
@@ -34,9 +34,9 @@ where
             arr.swap(len - i - 1, larget_idx);
             numop += 1;
         }
-        numicmp += 1;
+        num_idx_cmp += 1;
     }
     println!("Number of swaps used:- {numop}");
     println!("Number of comparisions used:- {numcmp}");
-    println!("Number of index comparisions used:- {numicmp}");
+    println!("Number of index comparisions used:- {num_idx_cmp}");
 }
