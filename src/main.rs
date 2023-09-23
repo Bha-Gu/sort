@@ -22,13 +22,18 @@ use quick::quick;
 mod merge;
 use merge::merge;
 
+mod heap;
+use heap::heap;
+
 fn main() {
     // let mut arr = vec![0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-    let mut arr = vec![
-        1, 6586, 145, 463, 14, 574, 169, 461, 69875, 4563, 4, 58, 46358, 43, 5,
-    ];
+    // let mut arr = vec![
+    //     1, 6586, 145, 463, 14, 574, 169, 461, 69875, 4563, 4, 58, 46358, 43, 5,
+    // ];
     // let mut arr = vec![1, 9, 2, 8, 3, 7, 4, 6, 5];
     // let mut arr = vec![9, 8, 7, 6, 5, 4, 3, 2, 1];
+
+    let mut arr: Vec<u32> = (0..50).rev().collect();
 
     let arrr = arr.clone();
     println!("Original:- \n{arrr:?}\n");
@@ -51,6 +56,8 @@ fn main() {
     run_quick(&arrr);
 
     run_merge(&arrr);
+
+    run_heap(&arrr);
 }
 
 fn run_selection<T>(arr: &[T]) -> Vec<T>
@@ -137,6 +144,17 @@ where
     let mut arr = (*arr).to_vec();
     println!("Merge:-");
     merge(&mut arr);
+    println!("{arr:?}\n");
+    arr
+}
+
+fn run_heap<T>(arr: &[T]) -> Vec<T>
+where
+    T: PartialOrd + Clone + std::fmt::Debug,
+{
+    let mut arr = (*arr).to_vec();
+    println!("Heap:-");
+    heap(&mut arr);
     println!("{arr:?}\n");
     arr
 }
@@ -238,6 +256,17 @@ mod tests {
             println!("{arr:?}");
             arr.sort_unstable();
             assert_eq!(run_merge(&i), arr);
+        }
+    }
+
+    #[test]
+    fn test_heap() {
+        let arrays = arrays();
+        for i in arrays {
+            let mut arr = i.clone();
+            println!("{arr:?}");
+            arr.sort_unstable();
+            assert_eq!(run_heap(&i), arr);
         }
     }
 }

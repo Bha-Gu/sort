@@ -34,8 +34,8 @@ where
     let pivot: T = arr[hi].to_owned();
     let mut idx = lo;
     for i in lo..hi {
+        *numcmp += 1;
         if arr[i] <= pivot {
-            *numcmp += 1;
             *num_idx_cmp += 1;
             if i != idx {
                 *numop += 1;
