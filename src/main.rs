@@ -7,6 +7,9 @@ use double_selection::double_selection;
 mod insertion;
 use insertion::insertion;
 
+mod binary_insertion;
+use binary_insertion::binary_insertion;
+
 mod bubble;
 use bubble::bubble;
 
@@ -17,10 +20,10 @@ mod merge;
 use merge::merge;
 
 fn main() {
-    let mut arr = vec![0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-    // let mut arr = vec![
-    // 1, 6586, 145, 463, 14, 574, 169, 461, 69875, 4563, 4, 58, 46358, 43, 5,
-    // ];
+    // let mut arr = vec![0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    let mut arr = vec![
+        1, 6586, 145, 463, 14, 574, 169, 461, 69875, 4563, 4, 58, 46358, 43, 5,
+    ];
     // let mut arr = vec![1, 9, 2, 8, 3, 7, 4, 6, 5];
     // let mut arr = vec![9, 8, 7, 6, 5, 4, 3, 2, 1];
 
@@ -35,6 +38,8 @@ fn main() {
     run_double_selection(&arrr);
 
     run_insertion(&arrr);
+
+    run_binary_insertion(&arrr);
 
     run_bubble(&arrr);
 
@@ -72,6 +77,17 @@ where
     let mut arr = (*arr).to_vec();
     println!("Insertion:-");
     insertion(&mut arr);
+    println!("{arr:?}\n");
+    arr
+}
+
+fn run_binary_insertion<T>(arr: &[T]) -> Vec<T>
+where
+    T: PartialOrd + Clone + std::fmt::Debug,
+{
+    let mut arr = (*arr).to_vec();
+    println!("Binary Insertion:-");
+    binary_insertion(&mut arr);
     println!("{arr:?}\n");
     arr
 }
@@ -151,6 +167,17 @@ mod tests {
             println!("{arr:?}");
             arr.sort_unstable();
             assert_eq!(run_insertion(&i), arr);
+        }
+    }
+
+    #[test]
+    fn test_binary_insertion() {
+        let arrays = arrays();
+        for i in arrays {
+            let mut arr = i.clone();
+            println!("{arr:?}");
+            arr.sort_unstable();
+            assert_eq!(run_binary_insertion(&i), arr);
         }
     }
 

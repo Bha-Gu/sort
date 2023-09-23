@@ -8,7 +8,7 @@ where
     let mut num_idx_cmp = 0;
     for i in 0..len {
         let mut smallest_idx = i;
-        for j in i..len {
+        for j in i + 1..len {
             if arr[j] < arr[smallest_idx] {
                 smallest_idx = j;
             }
