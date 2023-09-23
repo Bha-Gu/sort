@@ -13,6 +13,9 @@ use binary_insertion::binary_insertion;
 mod bubble;
 use bubble::bubble;
 
+mod shaker;
+use shaker::shaker;
+
 mod quick;
 use quick::quick;
 
@@ -42,6 +45,8 @@ fn main() {
     run_binary_insertion(&arrr);
 
     run_bubble(&arrr);
+
+    run_shaker(&arrr);
 
     run_quick(&arrr);
 
@@ -99,6 +104,17 @@ where
     let mut arr = (*arr).to_vec();
     println!("Bubble:-");
     bubble(&mut arr);
+    println!("{arr:?}\n");
+    arr
+}
+
+fn run_shaker<T>(arr: &[T]) -> Vec<T>
+where
+    T: PartialOrd + Clone + std::fmt::Debug,
+{
+    let mut arr = (*arr).to_vec();
+    println!("Shaker:-");
+    shaker(&mut arr);
     println!("{arr:?}\n");
     arr
 }
@@ -189,6 +205,17 @@ mod tests {
             println!("{arr:?}");
             arr.sort_unstable();
             assert_eq!(run_bubble(&i), arr);
+        }
+    }
+
+    #[test]
+    fn test_shaker() {
+        let arrays = arrays();
+        for i in arrays {
+            let mut arr = i.clone();
+            println!("{arr:?}");
+            arr.sort_unstable();
+            assert_eq!(run_shaker(&i), arr);
         }
     }
 
