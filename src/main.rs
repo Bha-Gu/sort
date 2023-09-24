@@ -28,6 +28,9 @@ use heap::heap;
 mod comb;
 use comb::comb;
 
+mod shell;
+use shell::shell;
+
 fn main() {
     // let mut arr = vec![0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
     // let mut arr = vec![
@@ -63,6 +66,8 @@ fn main() {
     run_heap(&arrr);
 
     run_comb(&arrr);
+
+    run_shell(&arrr);
 }
 
 fn run_selection<T>(arr: &[T]) -> Vec<T>
@@ -171,6 +176,17 @@ where
     let mut arr = (*arr).to_vec();
     println!("Comb:-");
     comb(&mut arr);
+    println!("{arr:?}\n");
+    arr
+}
+
+fn run_shell<T>(arr: &[T]) -> Vec<T>
+where
+    T: PartialOrd + Clone + std::fmt::Debug,
+{
+    let mut arr = (*arr).to_vec();
+    println!("Shell:-");
+    shell(&mut arr);
     println!("{arr:?}\n");
     arr
 }
@@ -294,6 +310,17 @@ mod tests {
             println!("{arr:?}");
             arr.sort_unstable();
             assert_eq!(run_comb(&i), arr);
+        }
+    }
+
+    #[test]
+    fn test_shell() {
+        let arrays = arrays();
+        for i in arrays {
+            let mut arr = i.clone();
+            println!("{arr:?}");
+            arr.sort_unstable();
+            assert_eq!(run_shell(&i), arr);
         }
     }
 }
