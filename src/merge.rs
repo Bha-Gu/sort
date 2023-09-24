@@ -39,40 +39,40 @@ where
     if arr[mid] <= arr[mid + 1] {
         return;
     }
-    let mut aux: Vec<T> = Vec::with_capacity(arr.len());
-    for i in &*arr {
-        aux.push(i.clone());
-    }
+    let mut aux: Vec<T> = Vec::with_capacity(mid - lo + 1);
+    (lo..=mid).for_each(|i| {
+        aux.push(arr[i].clone());
+    });
     let aux = aux;
-    let mut i = lo;
+    let mut i = 0;
     let mut j = mid + 1;
     let mut k = lo;
-    while i <= mid && j <= hi {
+    while i <= mid - lo && j <= hi {
         // monitor[2] += 2;
         monitor[1] += 1;
         monitor[0] += 1;
-        arr[k] = if aux[i] <= aux[j] {
+        arr[k] = if aux[i] <= arr[j] {
             let a = aux[i].clone();
             i += 1;
             a
         } else {
-            let a = aux[j].clone();
+            let a = arr[j].clone();
             j += 1;
             a
         };
         k += 1;
     }
     monitor[2] += 2;
-    if i > mid {
+    if i > mid - lo {
         while j <= hi {
             monitor[0] += 1;
-            arr[k] = aux[j].clone();
+            arr[k] = arr[j].clone();
             j += 1;
             k += 1;
         }
     }
     if j > hi {
-        while i <= mid {
+        while i <= mid - lo {
             monitor[0] += 1;
             arr[k] = aux[i].clone();
             i += 1;
